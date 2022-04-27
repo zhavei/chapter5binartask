@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity(), Communicator {
             KEY_IMAGE to R.drawable.gunung
         )
 
-        // to pass data to fragment B and open it
+        // to pass data to fragment B and open it a.k.a replace view fragment
         transaction.replace(R.id.fragmentSecond, fragmentTwo).commit()
     }
 

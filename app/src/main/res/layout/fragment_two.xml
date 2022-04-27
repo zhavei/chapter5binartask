@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/teal_200"
     tools:context=".fragment.FragmentTwo">
 
     <ImageView
+        android:src="@drawable/ic_baseline_home_"
         android:id="@+id/iv_fragmenttwo"
         android:layout_width="350dp"
         android:layout_height="250dp"
@@ -18,10 +19,23 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/tv_fragmenttwo_hello"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello this Fragment Two"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_fragmenttwo" />
+
+    <TextView
+        android:text="this tv from editext before"
         android:id="@+id/tv_fragmenttwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment"
+        android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

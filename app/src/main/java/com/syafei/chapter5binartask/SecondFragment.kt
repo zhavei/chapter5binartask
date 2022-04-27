@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.syafei.chapter5binartask.databinding.FragmentSecondBinding
 import com.syafei.chapter5binartask.databinding.FragmentTwoBinding
 
@@ -49,11 +50,20 @@ class SecondFragment : Fragment() {
         val editText = binding?.etSecondfrag
         communicator = activity as Communicator
         btn?.setOnClickListener {
-            communicator.editextData(editText?.text.toString(), id) //id means refer to an id
+            communicator.editextData(editText?.text.toString(), id) //id means refer to an id but wich id?
 
-            //communicator.editextData(editText?.text.toString())
-            //communicator.imageView(id)
+           /* //communicator.editextData(editText?.text.toString())
+            //communicator.imageView(id)*/
         }
+
+        //navigate with nav controler
+        val textView = binding?.tvSecondFragment
+        textView?.setOnClickListener {
+            val action = SecondFragmentDirections.naviSecondFragmentToFragmentTwo(56)
+                //this navigate to frgmentTwo
+            Navigation.findNavController(view).navigate(action)
+        }
+
     }
 
 }

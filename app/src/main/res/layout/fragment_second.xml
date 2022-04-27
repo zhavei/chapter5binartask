@@ -22,7 +22,7 @@
             app:layout_constraintTop_toTopOf="parent" />-->
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tv_second_fragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SecondFragment"
@@ -42,7 +42,7 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_second_fragment" />
 
         <Button
             android:id="@+id/bt_secondfrag"
