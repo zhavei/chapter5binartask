@@ -2,9 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 
-    // plugin for navigation component saveArgs
-    //id("androidx.navigation.safeargs.kotlin")
-
+    // plugin for navigation component saveArgs kotlin
     id 'androidx.navigation.safeargs.kotlin'
 }
 

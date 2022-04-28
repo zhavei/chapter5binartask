@@ -15,7 +15,7 @@ buildscript {
     }
 }
 
-//atas ini semua copyan baru
+// di atas ini semua copyan baru untuk navigation args
 
 plugins {
     id 'com.android.application' version '7.1.2' apply false
