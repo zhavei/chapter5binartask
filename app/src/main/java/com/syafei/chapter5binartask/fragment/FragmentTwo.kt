@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
-import androidx.navigation.navArgument
 import com.syafei.chapter5binartask.MainActivity
 import com.syafei.chapter5binartask.R
 import com.syafei.chapter5binartask.databinding.FragmentTwoBinding
@@ -15,7 +14,7 @@ import com.syafei.chapter5binartask.databinding.FragmentTwoBinding
 class FragmentTwo : Fragment() {
 
     //navigation arguments
-    val args: FragmentTwoArgs by navArgs()
+    private val args: FragmentTwoArgs by navArgs()
 
     var output: String? = ""
     private var binding: FragmentTwoBinding? = null
@@ -24,6 +23,7 @@ class FragmentTwo : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
 
         /*val view = inflater.inflate(R.layout.fragment_two, container, false)
         val texView : TextView = view.findViewById(R.id.tv_fragmenttwo)
@@ -73,6 +73,7 @@ class FragmentTwo : Fragment() {
             //set value on navigation argument
             val tvArgs = args.number
             tvFragmenttwoHello.text = tvArgs.toString()
+
 
             //to first fragment on clik texView
             //jika ada datanya klik ini malah jadi crash tapi klik textview hasil datanya justru malah pindah ke frgmentTwo how??
