@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.syafei.chapter5binartask.DetailsActivity
 import com.syafei.chapter5binartask.R
+import com.syafei.chapter5binartask.models.Gunung
+
 
 class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
@@ -78,3 +80,4 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
         return kode.size
     }
 }
+
