@@ -1,10 +1,14 @@
 package com.syafei.chapter5binartask.adapters
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.cardview.widget.CardView
+import androidx.core.view.get
 import androidx.recyclerview.widget.RecyclerView
 import com.syafei.chapter5binartask.DetailsActivity
 import com.syafei.chapter5binartask.R
@@ -46,6 +50,7 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
         var itemKode: TextView = itemView.findViewById(R.id.kodePertanyaan)
         var itemKategori: TextView = itemView.findViewById(R.id.kategori)
         var itemIsi: TextView = itemView.findViewById(R.id.isiPertanyaan)
+        //val container: CardView = itemView.findViewById(R.id.cv_item_recyler)
 
         init {
 
@@ -58,6 +63,7 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
                     putExtra(CATEGORY, itemKategori.text)
                     putExtra(CONTENT, itemIsi.text)
                 }
+                Toast.makeText(context, " klik posisi adapter: ${adapterPosition}" , Toast.LENGTH_SHORT).show()
                 context.startActivity(intent)
             }
         }
@@ -71,9 +77,12 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.itemKode.text = kode[position]
-        holder.itemKategori.text = kategori[position]
-        holder.itemIsi.text = isi[position]
+        holder.apply {
+            itemKode.text = kode[position]
+            itemKategori.text = kategori[position]
+            itemIsi.text = isi[position]
+        }
+
     }
 
     override fun getItemCount(): Int {
