@@ -54,7 +54,7 @@ class FirstFragment : Fragment() {
         val recyclerview = view.findViewById<RecyclerView>(R.id.rv_first_fragment)
         recyclerview.apply {
             layoutManager = LinearLayoutManager(activity)
-            adapter = RecyclerAdapter()
+            adapter = RecyclerAdapter(context)
         }
     }
 }

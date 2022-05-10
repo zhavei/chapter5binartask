@@ -1,21 +1,20 @@
 package com.syafei.chapter5binartask.adapters
 
+import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import androidx.cardview.widget.CardView
-import androidx.core.view.get
 import androidx.recyclerview.widget.RecyclerView
 import com.syafei.chapter5binartask.DetailsActivity
 import com.syafei.chapter5binartask.R
-import com.syafei.chapter5binartask.models.Gunung
 
 
-class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+class RecyclerAdapter(
+    private val context: Context
+) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     companion object {
         const val NUMBER = "number"
@@ -56,7 +55,7 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
             itemView.setOnClickListener {
                 var position: Int = adapterPosition
-                val context = itemView.context
+                //val context = itemView.context
                 val intent = Intent(context, DetailsActivity::class.java).apply {
                     putExtra(NUMBER, position)
                     putExtra(CODE, itemKode.text)
