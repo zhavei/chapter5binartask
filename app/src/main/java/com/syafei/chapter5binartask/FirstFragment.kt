@@ -14,8 +14,13 @@ import com.syafei.chapter5binartask.databinding.FragmentFirstBinding
 
 class FirstFragment : Fragment() {
 
-    private var binding: FragmentFirstBinding? = null
-    private var vpSlider: ViewPager? = null //with viewBinding
+    //private var binding: FragmentFirstBinding? = null
+    private lateinit var binding: FragmentFirstBinding
+
+    /*with viewBinding set to null because the view isnt created while  Fragment constructed instead it will reference while onCreateView created*/
+    private var vpSlider: ViewPager? = null
+    private var recyclerview: RecyclerView? = null
+
     //private lateinit var vpSlider: ViewPager //no viewBinding
 
     //recyclerView
@@ -26,14 +31,14 @@ class FirstFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         //val view = inflater.inflate(R.layout.fragment_first, container, false)
         binding = FragmentFirstBinding.inflate(inflater, container, false)
 
         //vpSlider = view.findViewById(R.id.vp_first_fragment)
-        vpSlider = binding?.vpFirstFragment
-        val vpAdapter = SliderAdapter(childFragmentManager)
+        vpSlider = binding.vpFirstFragment
+        val vpAdapter = SliderAdapter(childFragmentManager) //adaptermanager for fragment
 
         val secondFragment = SecondFragment()
         val tridhFragment = TridhFragment()
@@ -45,14 +50,15 @@ class FirstFragment : Fragment() {
         vpSlider?.offscreenPageLimit = 3
 
         //return view
-        return binding?.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recyclerview = view.findViewById<RecyclerView>(R.id.rv_first_fragment)
-        recyclerview.apply {
+        //recyclerview = view.findViewById(R.id.rv_first_fragment)
+        recyclerview = binding.rvFirstFragment
+        recyclerview?.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = RecyclerAdapter(context)
         }
