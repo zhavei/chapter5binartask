@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
@@ -51,9 +52,12 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //recyclerview decorations
+        val devider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         val recyclerview = view.findViewById<RecyclerView>(R.id.rv_first_fragment)
         recyclerview.apply {
             layoutManager = LinearLayoutManager(activity)
+            addItemDecoration(devider)
             adapter = RecyclerAdapter(context)
         }
     }
