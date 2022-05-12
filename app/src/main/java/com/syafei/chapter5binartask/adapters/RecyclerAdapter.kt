@@ -2,6 +2,7 @@ package com.syafei.chapter5binartask.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -54,7 +55,7 @@ class RecyclerAdapter(
         init {
 
             itemView.setOnClickListener {
-                var position: Int = adapterPosition
+                val position: Int = adapterPosition
                 //val context = itemView.context
                 val intent = Intent(context, DetailsActivity::class.java).apply {
                     putExtra(NUMBER, position)
@@ -62,7 +63,8 @@ class RecyclerAdapter(
                     putExtra(CATEGORY, itemKategori.text)
                     putExtra(CONTENT, itemIsi.text)
                 }
-                Toast.makeText(context, " klik posisi adapter: ${adapterPosition}" , Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, " klik posisi adapter: ${position}" , Toast.LENGTH_SHORT).show()
+                Log.i("di klik:RecyclerAdapter", itemKategori.toString())
                 context.startActivity(intent)
             }
         }
@@ -76,6 +78,7 @@ class RecyclerAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
         holder.apply {
             itemKode.text = kode[position]
             itemKategori.text = kategori[position]
