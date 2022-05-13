@@ -40,13 +40,22 @@ class TridhFragment : Fragment() {
             activity?.getSharedPreferences(sharedPrefsFile, Context.MODE_PRIVATE)
 
         btnSave.setOnClickListener {
-            val id: Int = Integer.parseInt(etInput.text.toString())
-            val name: String = etInputName.text.toString()
-            val sharfEditor: SharedPreferences.Editor? = sharedPreferences?.edit()
-            sharfEditor?.putInt(ID_KEY, id)
-            sharfEditor?.putString(ID_NAME, name)
-            sharfEditor?.apply()
-            Toast.makeText(context, "Data Saved", Toast.LENGTH_SHORT).show()
+
+            if (etInput.text.toString().trim().isNotEmpty() && etInputName.text.toString().trim()
+                    .isNotEmpty()
+            ) {
+                val id: Int = Integer.parseInt((etInput.text.toString()))
+                val name: String = etInputName.text.toString()
+                val sharfEditor: SharedPreferences.Editor? = sharedPreferences?.edit()
+                sharfEditor?.putInt(ID_KEY, id)
+                sharfEditor?.putString(ID_NAME, name)
+                sharfEditor?.apply()
+                Toast.makeText(context, "Data Saved", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(context, "isi datanya gan, kaga danta ente", Toast.LENGTH_SHORT)
+                    .show()
+            }
+
         }
 
         btnLoad.setOnClickListener {
@@ -67,6 +76,8 @@ class TridhFragment : Fragment() {
             val editor = sharedPreferences?.edit()
             editor?.clear()
             editor?.apply()
+            etInput.setText("")
+            etInputName.setText("")
             tvShowName.setText("")
             tvShowId.setText("")
             Toast.makeText(context, "Data dihapouskuen", Toast.LENGTH_SHORT).show()

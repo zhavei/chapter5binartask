@@ -41,6 +41,7 @@
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
             <EditText
+                android:maxLength="8"
                 android:inputType="numberDecimal"
                 android:id="@+id/etInputId"
                 android:layout_width="201dp"
