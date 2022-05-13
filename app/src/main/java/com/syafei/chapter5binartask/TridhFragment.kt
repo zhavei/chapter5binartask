@@ -19,7 +19,8 @@ class TridhFragment : Fragment() {
     companion object {
         val ID_KEY = "id_key"
         val ID_NAME = "id_name"
-        val ID_DEFAULT_NAME = "default name"
+        val ID_DEFAULT_KEY = 0
+        val ID_DEFAULT_NAME = "empty"
     }
 
     override fun onCreateView(
@@ -59,15 +60,16 @@ class TridhFragment : Fragment() {
         }
 
         btnLoad.setOnClickListener {
-            val sharedIdValue = sharedPreferences?.getInt(ID_KEY, 0)
+            val sharedIdValue = sharedPreferences?.getInt(ID_KEY, ID_DEFAULT_KEY)
             val sharedNameValue = sharedPreferences?.getString(ID_NAME, ID_DEFAULT_NAME)
+
             if (sharedIdValue == 0 && sharedNameValue.equals(ID_DEFAULT_NAME)) {
-                tvShowName.setText("name: ${sharedNameValue}").toString()
-                tvShowId.setText("id: ${sharedIdValue}").toString()
+                tvShowName.setText("name: $sharedNameValue").toString()
+                tvShowId.setText("id: $sharedIdValue").toString()
                 Toast.makeText(context, "Data View Kosong", Toast.LENGTH_SHORT).show()
             } else {
-                tvShowName.setText(sharedNameValue.toString())
-                tvShowId.setText(sharedIdValue.toString())
+                tvShowName.text = sharedNameValue.toString()
+                tvShowId.text = sharedIdValue.toString()
                 Toast.makeText(context, "Data Di Tampilkuen", Toast.LENGTH_SHORT).show()
             }
         }
