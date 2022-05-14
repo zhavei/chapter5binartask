@@ -15,7 +15,7 @@ import com.syafei.chapter5binartask.R
 
 class RecyclerAdapter(
     private val context: Context
-) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder>() {
 
     companion object {
         const val NUMBER = "number"
@@ -46,7 +46,8 @@ class RecyclerAdapter(
         "pertanyaan 21", "pertanyaan 56", "pertanyaan 69"
     )
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    //viewHolder hold every view for a recyclerview
+    inner class RecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var itemKode: TextView = itemView.findViewById(R.id.kodePertanyaan)
         var itemKategori: TextView = itemView.findViewById(R.id.kategori)
         var itemIsi: TextView = itemView.findViewById(R.id.isiPertanyaan)
@@ -71,15 +72,15 @@ class RecyclerAdapter(
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.cardview_item_recyclerview, parent, false)
-        return ViewHolder(view)
+        return RecyclerViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holderRecycler: RecyclerViewHolder, position: Int) {
 
-        holder.apply {
+        holderRecycler.apply {
             itemKode.text = kode[position]
             itemKategori.text = kategori[position]
             itemIsi.text = isi[position]
