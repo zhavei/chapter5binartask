@@ -5,6 +5,7 @@ import android.content.IntentFilter
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
@@ -132,11 +133,13 @@ class MainActivity : AppCompatActivity(), Communicator {
     override fun onResume() {
         super.onResume()
         navController.addOnDestinationChangedListener(listener)
+        Toast.makeText(this, "MainActivity Resumed", Toast.LENGTH_SHORT).show()
     }
 
     override fun onPause() {
         super.onPause()
         navController.removeOnDestinationChangedListener(listener)
+        Toast.makeText(this, "MainActivity Paused", Toast.LENGTH_SHORT).show()
     }
 
     override fun onStop() {

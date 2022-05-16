@@ -35,6 +35,11 @@ class DetailsActivityRecyclerview : AppCompatActivity() {
         supportActionBar?.title = itemkategori
     }
 
+    override fun onStart() {
+        super.onStart()
+        Toast.makeText(this, "DetailsActivityRecyclerview started", Toast.LENGTH_SHORT).show()
+    }
+
     override fun onBackPressed() {
         super.onBackPressed()
         Toast.makeText(this, "DetailsActivityRecyclerview destroyed", Toast.LENGTH_SHORT).show()
