@@ -9,13 +9,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.syafei.chapter5binartask.DetailsActivity
+import com.syafei.chapter5binartask.DetailsActivityRecyclerview
 import com.syafei.chapter5binartask.R
 
 
-class RecyclerAdapter(
+class RecyclerFragmentAdapter(
     private val context: Context
-) : RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder>() {
+) : RecyclerView.Adapter<RecyclerFragmentAdapter.RecyclerViewHolder>() {
 
     companion object {
         const val NUMBER = "number"
@@ -56,9 +56,10 @@ class RecyclerAdapter(
         init {
 
             itemView.setOnClickListener {
-                val position: Int = adapterPosition
-                //val context = itemView.context
-                val intent = Intent(context, DetailsActivity::class.java).apply {
+                //val position: Int = adapterPosition
+                val position: Int = bindingAdapterPosition
+                //val context = itemView.context // if uses context itemView instead of class constructor
+                val intent = Intent(context, DetailsActivityRecyclerview::class.java).apply {
                     putExtra(NUMBER, position)
                     putExtra(CODE, itemKode.text)
                     putExtra(CATEGORY, itemKategori.text)

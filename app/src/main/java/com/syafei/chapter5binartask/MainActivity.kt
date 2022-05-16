@@ -1,5 +1,7 @@
 package com.syafei.chapter5binartask
 
+import android.content.Intent
+import android.content.IntentFilter
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
@@ -15,6 +17,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
+import com.syafei.chapter5binartask.broadcastReceiver.AirPlaneModeChangedReciver
 import com.syafei.chapter5binartask.databinding.ActivityMainBinding
 import com.syafei.chapter5binartask.fragment.FragmentTwo
 
@@ -25,6 +28,7 @@ class MainActivity : AppCompatActivity(), Communicator {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navigationView: NavigationView
+    lateinit var receiver: AirPlaneModeChangedReciver
 
     private lateinit var listener: NavController.OnDestinationChangedListener
 
@@ -39,17 +43,24 @@ class MainActivity : AppCompatActivity(), Communicator {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //broadcast receiver on airplanemode Changed
+        onAirPlaneModeChanged()
+
         //setupWithNavController
-        drawerLayout = findViewById(R.id.drawer_layout)
-        bottomNavigationView = findViewById(R.id.BottomNavigationView)
-        navigationView = findViewById(R.id.navigationView_drawer)
-        navController = findNavController(R.id.fragmentContainerView)
+        drawerLayout = binding.drawerLayout
+        bottomNavigationView = binding.bottomNavigationView
+        navigationView = binding.navigationviewDrawer
+        navController = findNavController(R.id.fragment_container_view)
 
         //appBarConfigForBottomNavigation
-        appBarConfiguration = AppBarConfiguration(setOf
-            (R.id.firstFragment,
-            R.id.secondFragment,
-            R.id.tridhFragment))
+        appBarConfiguration = AppBarConfiguration(
+            setOf
+                (
+                R.id.firstFragment,
+                R.id.secondFragment,
+                R.id.tridhFragment
+            )
+        )
 
         //setupAppbar for drawerlayout
         appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
@@ -69,6 +80,13 @@ class MainActivity : AppCompatActivity(), Communicator {
                     supportActionBar?.setBackgroundDrawable(ColorDrawable(getColor(android.R.color.holo_green_dark)))
                 }
             }
+    }
+
+    private fun onAirPlaneModeChanged() {
+        receiver = AirPlaneModeChangedReciver()
+        IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED).also {
+            registerReceiver(receiver, it)
+        }
     }
 
     /*override fun editextData(editextData: String) {
@@ -102,12 +120,12 @@ class MainActivity : AppCompatActivity(), Communicator {
             KEY_IMAGE to R.drawable.gunung
         )
 
-        // to pass data to fragment B and open it a.k.a replace view fragment
+        // to pass data to fragment fragmentTwo and open it a.k.a replace view fragment
         transaction.replace(R.id.fragmentSecond, fragmentTwo).commit()
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.fragmentContainerView)
+        val navController = findNavController(R.id.fragment_container_view)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
@@ -119,5 +137,13 @@ class MainActivity : AppCompatActivity(), Communicator {
     override fun onPause() {
         super.onPause()
         navController.removeOnDestinationChangedListener(listener)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        onAirPlaneModeChanged()
+
+        //handle memory leak on broadcast receiver
+        unregisterReceiver(receiver)
     }
 }

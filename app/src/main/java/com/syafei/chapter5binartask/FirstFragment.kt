@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
-import com.syafei.chapter5binartask.adapters.RecyclerAdapter
+import com.syafei.chapter5binartask.adapters.RecyclerFragmentAdapter
 import com.syafei.chapter5binartask.adapters.SliderAdapter
 import com.syafei.chapter5binartask.databinding.FragmentFirstBinding
 
@@ -57,6 +57,8 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //recyclerview decorations
+        val devider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         //recyclerview = view.findViewById(R.id.rv_first_fragment)
 
 
@@ -69,7 +71,7 @@ class FirstFragment : Fragment() {
         recyclerview?.apply {
             addItemDecoration(divider)
             layoutManager = LinearLayoutManager(activity)
-            adapter = RecyclerAdapter(context)
+            adapter = RecyclerFragmentAdapter(context)
         }
     }
 }
