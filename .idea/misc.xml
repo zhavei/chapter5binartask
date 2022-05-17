@@ -4,8 +4,6 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Project_latihan_binar/chapter5binartask/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Project_latihan_binar/chapter5binartask/app/src/main/res/layout/activity_recyclerview_details.xml" value="0.2" />
-        <entry key="..\:/Project_latihan_binar/chapter5binartask/app/src/main/res/layout/cardview_item_recyclerview.xml" value="0.33" />
         <entry key="..\:/Project_latihan_binar/chapter5binartask/app/src/main/res/layout/fragment_first.xml" value="0.18072289156626506" />
         <entry key="..\:/Project_latihan_binar/chapter5binartask/app/src/main/res/layout/fragment_second.xml" value="0.18072289156626506" />
         <entry key="..\:/Project_latihan_binar/chapter5binartask/app/src/main/res/layout/fragment_tridh.xml" value="0.18072289156626506" />
@@ -15,7 +13,7 @@
         <entry key="..\:/Users/LenovoPC/AndroidStudioProjects/chapter5binartask/app/src/main/res/layout/fragment_first.xml" value="0.22" />
         <entry key="..\:/Users/LenovoPC/AndroidStudioProjects/chapter5binartask/app/src/main/res/layout/fragment_second.xml" value="0.22" />
         <entry key="..\:/Users/LenovoPC/AndroidStudioProjects/chapter5binartask/app/src/main/res/layout/fragment_tridh.xml" value="0.2509057971014493" />
-        <entry key="..\:/Users/LenovoPC/AndroidStudioProjects/chapter5binartask/app/src/main/res/layout/fragment_two.xml" value="0.25" />
+        <entry key="..\:/Users/LenovoPC/AndroidStudioProjects/chapter5binartask/app/src/main/res/layout/fragment_two.xml" value="0.33" />
         <entry key="..\:/Users/LenovoPC/AndroidStudioProjects/chapter5binartask/app/src/main/res/menu/nav_drawer.xml" value="0.36666666666666664" />
       </map>
     </option>

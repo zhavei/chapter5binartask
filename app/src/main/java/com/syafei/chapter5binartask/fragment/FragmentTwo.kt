@@ -11,7 +11,11 @@ import com.syafei.chapter5binartask.MainActivity
 import com.syafei.chapter5binartask.R
 import com.syafei.chapter5binartask.databinding.FragmentTwoBinding
 
-class FragmentTwo : Fragment() {
+class FragmentTwo : Fragment(), View.OnClickListener {
+
+    companion object {
+        const val SAVE_RESULT = "save state"
+    }
 
     //navigation arguments
     private val args: FragmentTwoArgs by navArgs()
@@ -60,6 +64,13 @@ class FragmentTwo : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //to save result on savedInstance when UI changed
+        if (savedInstanceState != null) {
+            val result = savedInstanceState.getString(SAVE_RESULT)
+            binding?.tvFragmenttwoHasil?.text = result
+        }
+
         binding?.run {
 
             output = arguments?.getString(MainActivity.KEY_FRAGSECOND)
@@ -74,19 +85,56 @@ class FragmentTwo : Fragment() {
             val tvArgs = args.number
             tvFragmenttwoHello.text = tvArgs.toString()
 
-
             //to first fragment on clik texView
             //jika ada datanya klik ini malah jadi crash tapi klik textview hasil datanya justru malah pindah ke frgmentTwo how??
             val tvfragtwo = binding?.ivFragmenttwo
             tvfragtwo?.setOnClickListener {
                 Navigation.findNavController(view).navigate(R.id.navi_fragmentTwo_to_firstFragment)
             }
+
+            //button calculateb
+            btnFragmenttwoHitung.setOnClickListener(this@FragmentTwo)
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
+    }
+
+    //to save result calcultion on savedInstance when UI changed
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(SAVE_RESULT, binding?.tvFragmenttwoHasil?.text.toString())
+    }
+
+    //onclik on button calculate
+    override fun onClick(view: View?) {
+        if (view?.id == R.id.btn_fragmenttwo_hitung) {
+            val panjang = binding?.etFragmenttwoPanjang?.text.toString().trim()
+            val lebar = binding?.etFragmenttwoLebar?.text.toString().trim()
+            val tinggi = binding?.etFragmenttwoTinggi?.text.toString().trim()
+
+            binding?.run {
+                var isEmptyField = false
+                if (panjang.isEmpty()) {
+                    isEmptyField = true
+                    etFragmenttwoPanjang.error = "field cannot be empty"
+                }
+                if (lebar.isEmpty()) {
+                    isEmptyField = true
+                    etFragmenttwoLebar.error = "field cannot be empty"
+                }
+                if (tinggi.isEmpty()) {
+                    isEmptyField = true
+                    etFragmenttwoTinggi.error = "field cannot be empty"
+                }
+                if (!isEmptyField) {
+                    val volume = panjang.toDouble() * lebar.toDouble() * tinggi.toDouble()
+                    binding?.tvFragmenttwoHasil?.text = volume.toString()
+                }
+            }
+        }
     }
 
 }
