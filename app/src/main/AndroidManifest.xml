@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Chapter5binartask">
         <activity
+            android:name=".activityBringData.DataIntentActivityTwo"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -21,6 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".DetailsActivityRecyclerview" />
+        <activity android:name=".activityBringData.DataIntentActivity" />
     </application>
 
 </manifest>

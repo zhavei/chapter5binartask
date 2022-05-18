@@ -53,6 +53,8 @@ class TridhFragment : Fragment() {
                 sharfEditor?.apply()
                 Toast.makeText(context, "Data Saved", Toast.LENGTH_SHORT).show()
             } else {
+                etInput.error = "field cannot be empty"
+                etInputName.error = "field cannot be empty"
                 Toast.makeText(context, "isi datanya gan, kaga danta ente", Toast.LENGTH_SHORT)
                     .show()
             }

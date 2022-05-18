@@ -1,19 +1,25 @@
 package com.syafei.chapter5binartask
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import com.syafei.chapter5binartask.activityBringData.DataIntentActivity
+import com.syafei.chapter5binartask.activityBringData.DataIntentActivityTwo
 import com.syafei.chapter5binartask.databinding.FragmentSecondBinding
-import com.syafei.chapter5binartask.databinding.FragmentTwoBinding
 
 
 class SecondFragment : Fragment() {
 
     private var binding : FragmentSecondBinding? = null
     private lateinit var communicator: Communicator
+
+    companion object{
+        const val INTENT_KEY_1 = "intent_1"
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -63,6 +69,20 @@ class SecondFragment : Fragment() {
                 //this navigate to frgmentTwo
             Navigation.findNavController(view).navigate(action)
         }
+
+        val btnToDataIntent = binding?.btnSecondfragTodataIntent
+        btnToDataIntent?.setOnClickListener {
+            val intent = Intent(context, DataIntentActivity::class.java)
+            startActivity(intent)
+        }
+
+        val btnToDataIntent2 = binding?.btnSecondfragTodataIntent2
+        btnToDataIntent2?.setOnClickListener {
+            val intent = Intent(context, DataIntentActivityTwo::class.java)
+            intent.putExtra(INTENT_KEY_1 , "ini intent bawa data putString")
+        }
+
+
 
     }
 

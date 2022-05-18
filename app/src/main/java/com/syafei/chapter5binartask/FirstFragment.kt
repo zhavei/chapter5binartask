@@ -61,10 +61,6 @@ class FirstFragment : Fragment() {
         val devider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         //recyclerview = view.findViewById(R.id.rv_first_fragment)
 
-
-
-
-
         // recyclerview devider decoration
         val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         recyclerview = binding.rvFirstFragment
