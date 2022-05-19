@@ -8,16 +8,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.syafei.chapter5binartask.activityBringData.DataIntentActivity
+import com.syafei.chapter5binartask.activityBringData.DataIntentActivityTree
 import com.syafei.chapter5binartask.activityBringData.DataIntentActivityTwo
 import com.syafei.chapter5binartask.databinding.FragmentSecondBinding
+import com.syafei.chapter5binartask.models.Cars
 
 
 class SecondFragment : Fragment() {
 
-    private var binding : FragmentSecondBinding? = null
+    private var binding: FragmentSecondBinding? = null
     private lateinit var communicator: Communicator
 
-    companion object{
+    companion object {
         const val INTENT_KEY_1 = "intent_1"
     }
 
@@ -66,24 +68,38 @@ class SecondFragment : Fragment() {
         val textView = binding?.tvSecondFragment
         textView?.setOnClickListener {
             val action = SecondFragmentDirections.naviSecondFragmentToFragmentTwo(56)
-                //this navigate to frgmentTwo
+            //this navigate to frgmentTwo
             Navigation.findNavController(view).navigate(action)
         }
 
-        val btnToDataIntent = binding?.btnSecondfragTodataIntent
-        btnToDataIntent?.setOnClickListener {
-            val intent = Intent(context, DataIntentActivity::class.java)
-            startActivity(intent)
-        }
 
-        val btnToDataIntent2 = binding?.btnSecondfragTodataIntent2
-        btnToDataIntent2?.setOnClickListener {
-            val intent = Intent(context, DataIntentActivityTwo::class.java)
-            intent.putExtra(INTENT_KEY_1 , "ini intent bawa data putString")
-        }
 
+        binding?.run {
+            btnSecondfragTodataIntent.setOnClickListener {
+                val intent = Intent(context, DataIntentActivity::class.java)
+                startActivity(intent)
+            }
+            btnSecondfragTodataIntent2.setOnClickListener {
+                val intent2 = Intent(context, DataIntentActivityTwo::class.java)
+                intent2.putExtra(
+                    INTENT_KEY_1,
+                    "ini intent bawa data putString dari fragment seconds"
+                )
+                startActivity(intent2)
+            }
+            btnSecondfragTodataIntent3.setOnClickListener {
+                val dataCars = Cars(
+                    "honda",
+                    "civic",
+                    R.drawable.gunung
+                )
+                val intent3 = Intent(context, DataIntentActivityTree::class.java)
+                intent3.putExtra(INTENT_KEY_1, dataCars)
+                startActivity(intent3)
+            }
+
+        }
 
 
     }
-
 }

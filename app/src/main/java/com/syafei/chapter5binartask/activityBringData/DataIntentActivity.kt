@@ -6,8 +6,8 @@ import com.syafei.chapter5binartask.databinding.ActivityDataIntentBinding
 
 class DataIntentActivity : AppCompatActivity() {
 
-    private var _binding : ActivityDataIntentBinding? = null
-    private lateinit var binding : ActivityDataIntentBinding
+    private var _binding: ActivityDataIntentBinding? = null
+    private lateinit var binding: ActivityDataIntentBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,6 +16,11 @@ class DataIntentActivity : AppCompatActivity() {
         binding = requireNotNull(_binding)
         setContentView(binding.root)
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 }
