@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Chapter5binartask">
         <activity
+            android:name=".activityBringData.DataIntentActivityForResult"
+            android:exported="false" />
+        <activity
+            android:name=".activityBringData.DataIntentActivityResult"
+            android:exported="false" />
+        <activity
             android:name=".activityBringData.DataIntentActivityTree"
             android:exported="false" />
         <activity

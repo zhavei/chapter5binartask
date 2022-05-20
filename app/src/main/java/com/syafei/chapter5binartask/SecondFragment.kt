@@ -1,10 +1,13 @@
 package com.syafei.chapter5binartask
 
 import android.content.Intent
+import android.content.Intent.ACTION_DIAL
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContract
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.syafei.chapter5binartask.activityBringData.DataIntentActivity
@@ -16,7 +19,9 @@ import com.syafei.chapter5binartask.models.Cars
 
 class SecondFragment : Fragment() {
 
-    private var binding: FragmentSecondBinding? = null
+    private var _binding: FragmentSecondBinding? = null
+    private lateinit var binding: FragmentSecondBinding
+
     private lateinit var communicator: Communicator
 
     companion object {
@@ -27,7 +32,7 @@ class SecondFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         /*// Inflate the layout for this fragment
         binding = FragmentSecondBinding.inflate(inflater)
         val btn = binding?.btSecondfrag
@@ -41,8 +46,9 @@ class SecondFragment : Fragment() {
         }*/
 
 
-        binding = FragmentSecondBinding.inflate(inflater, container, false)
-        return binding?.root
+        _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        binding = requireNotNull(_binding)
+        return binding.root
 
         /*val view = inflater.inflate(R.layout.fragment_second, container, false)
         val btn : Button = view.findViewById(R.id.bt_secondfrag)
@@ -54,27 +60,26 @@ class SecondFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Inflate the layout for this fragment
-        val btn = binding?.btSecondfrag
-        val editText = binding?.etSecondfrag
+        val btn = binding.btSecondfrag
+        val editText = binding.etSecondfrag
         communicator = activity as Communicator
-        btn?.setOnClickListener {
-            communicator.editextData(editText?.text.toString(), id) //id means refer to an id but wich id?
+        btn.setOnClickListener {
+            communicator.editextData(
+                editText.text.toString(), id) //id means refer to an id but wich id?
 
-           /* //communicator.editextData(editText?.text.toString())
-            //communicator.imageView(id)*/
+            /* //communicator.editextData(editText?.text.toString())
+                //communicator.imageView(id)*/
         }
 
         //navigate with nav controler
-        val textView = binding?.tvSecondFragment
-        textView?.setOnClickListener {
+        val textView = binding.tvSecondFragment
+        textView.setOnClickListener {
             val action = SecondFragmentDirections.naviSecondFragmentToFragmentTwo(56)
             //this navigate to frgmentTwo
             Navigation.findNavController(view).navigate(action)
         }
 
-
-
-        binding?.run {
+        binding.run {
             btnSecondfragTodataIntent.setOnClickListener {
                 val intent = Intent(context, DataIntentActivity::class.java)
                 startActivity(intent)
@@ -98,8 +103,18 @@ class SecondFragment : Fragment() {
                 startActivity(intent3)
             }
 
+            btnSecondfragTodataIntent4.setOnClickListener {
+                val telephone = "085888636395"
+                val telIntent = Intent(ACTION_DIAL, Uri.parse("tel:$telephone"))
+                startActivity(telIntent)
+            }
+
         }
 
+    }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
