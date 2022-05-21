@@ -7,10 +7,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.contract.ActivityResultContract
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.syafei.chapter5binartask.activityBringData.DataIntentActivity
+import com.syafei.chapter5binartask.activityBringData.DataIntentActivityResult
 import com.syafei.chapter5binartask.activityBringData.DataIntentActivityTree
 import com.syafei.chapter5binartask.activityBringData.DataIntentActivityTwo
 import com.syafei.chapter5binartask.databinding.FragmentSecondBinding
@@ -107,6 +107,11 @@ class SecondFragment : Fragment() {
                 val telephone = "085888636395"
                 val telIntent = Intent(ACTION_DIAL, Uri.parse("tel:$telephone"))
                 startActivity(telIntent)
+            }
+
+            btnDataIntentActivityResult.setOnClickListener {
+                val intent4 = Intent(context, DataIntentActivityResult::class.java)
+                startActivity(intent4)
             }
 
         }

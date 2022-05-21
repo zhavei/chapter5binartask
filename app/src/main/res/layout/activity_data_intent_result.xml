@@ -7,23 +7,32 @@
     tools:context=".activityBringData.DataIntentActivityResult">
 
     <Button
-        android:id="@+id/btn_secondfrag_todata_intent5"
+        android:id="@+id/btn__data_intent_activity_result_"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="move result"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/tv_data_intent_activity_result"
+        android:layout_marginStart="12dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
         android:background="@color/white"
         android:text="Result intent"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_secondfrag_todata_intent5"
+        app:layout_constraintBottom_toBottomOf="@+id/btn__data_intent_activity_result_"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btn_secondfrag_todata_intent5"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/btn__data_intent_activity_result_"
+        app:layout_constraintTop_toTopOf="@+id/btn__data_intent_activity_result_" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

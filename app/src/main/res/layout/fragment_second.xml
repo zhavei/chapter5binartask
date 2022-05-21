@@ -98,23 +98,14 @@
                 app:layout_constraintTop_toBottomOf="@id/btn_secondfrag_todata_intent3" />
 
             <Button
-                android:id="@+id/btn_secondfrag_todata_intent5"
-                android:layout_width="0dp"
+                android:id="@+id/btn_data_intent_activity_result"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="move result"
+                app:layout_constraintEnd_toEndOf="@+id/btn_secondfrag_todata_intent4"
                 app:layout_constraintStart_toStartOf="@+id/btn_secondfrag_todata_intent4"
                 app:layout_constraintTop_toBottomOf="@+id/btn_secondfrag_todata_intent4" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="12dp"
-                android:background="@color/white"
-                android:text="Result intent"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_secondfrag_todata_intent5"
-                app:layout_constraintEnd_toEndOf="@id/btn_secondfrag_todata_intent4"
-                app:layout_constraintStart_toEndOf="@id/btn_secondfrag_todata_intent5"
-                app:layout_constraintTop_toTopOf="@+id/btn_secondfrag_todata_intent5" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
