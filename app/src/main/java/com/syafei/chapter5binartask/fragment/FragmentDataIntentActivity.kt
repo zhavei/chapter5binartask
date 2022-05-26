@@ -7,16 +7,37 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.syafei.chapter5binartask.databinding.FragmentDataIntentActivityBinding
 
-class FragmentDataIntentActivity : Fragment() {
+class FragmentDataIntentActivity : Fragment(), View.OnClickListener {
 
-//    private var _binding = FragmentDataIntentActivityBinding? = null
-
+     var _binding: FragmentDataIntentActivityBinding? = null
+     lateinit var binding: FragmentDataIntentActivityBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
+    ): View {
+        _binding = FragmentDataIntentActivityBinding.inflate(inflater, container, false)
+        binding = requireNotNull(_binding)
+        return binding.root
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.btnFragmentDataIntentActivity.setOnClickListener(this@FragmentDataIntentActivity)
+
+
+
+    }
+
+    override fun onClick(view: View?) {
+
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

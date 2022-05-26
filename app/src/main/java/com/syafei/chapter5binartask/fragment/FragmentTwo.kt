@@ -96,7 +96,7 @@ class FragmentTwo : Fragment(), View.OnClickListener {
                 Navigation.findNavController(view).navigate(R.id.navi_fragmentTwo_to_firstFragment)
             }
 
-            //button calculateb
+            //button calculate
             btnFragmenttwoHitung.setOnClickListener(this@FragmentTwo)
         }
     }

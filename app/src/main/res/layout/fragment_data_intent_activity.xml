@@ -9,7 +9,7 @@
         android:id="@+id/tv_fragment_data_intent_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment"
+        android:text="hello this Fragment Data Intent Activity yang di dalem activity data intent activity"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
