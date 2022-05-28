@@ -6,18 +6,20 @@
     android:layout_margin="15dp">
 
     <TextView
-        android:id="@+id/tv_fragment_data_intent_activity"
-        android:layout_width="match_parent"
+        android:id="@+id/tv_data_intent_move_fragment"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="hello this Fragment Data Intent Activity yang di dalem activity data intent activity"
+        android:text="hello ini DataIntentMoveFragment"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btn_fragment_data_intent_activity"
-        android:layout_width="wrap_content"
+        android:id="@+id/btn_data_intent_move_fragment"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="to data intent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_fragment_data_intent_activity"/>
+        android:text="button data intent move fragment"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_data_intent_move_fragment" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.syafei.chapter5binartask.R
 import com.syafei.chapter5binartask.databinding.ActivityDataIntentBinding
-import com.syafei.chapter5binartask.fragment.FragmentDataIntentActivity
+import com.syafei.chapter5binartask.fragment.DataIntentFragment
 
 class DataIntentActivity : AppCompatActivity() {
 
@@ -24,17 +24,17 @@ class DataIntentActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val mFragmentManager = supportFragmentManager
-        val mFragmentDataIntentActivity = FragmentDataIntentActivity()
+        val mFragmentDataIntentActivity = DataIntentFragment()
         val fragment =
-            mFragmentManager.findFragmentByTag(FragmentDataIntentActivity::class.java.simpleName)
+            mFragmentManager.findFragmentByTag(DataIntentFragment::class.java.simpleName)
 
-        if (fragment !is FragmentDataIntentActivity) {
-            Log.i(TAG, "fragment Name: " + FragmentDataIntentActivity::class.java.simpleName)
+        if (fragment !is DataIntentFragment) {
+            Log.i(TAG, "fragment Name: " + DataIntentFragment::class.java.simpleName)
             mFragmentManager
                 .beginTransaction().add(
                     R.id.fragment_on_activity_dataintent,
                     mFragmentDataIntentActivity,
-                    FragmentDataIntentActivity::class.java.simpleName
+                    DataIntentFragment::class.java.simpleName
                 )
                 .commit()
         }
