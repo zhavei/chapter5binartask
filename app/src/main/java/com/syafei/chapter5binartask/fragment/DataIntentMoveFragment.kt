@@ -39,6 +39,24 @@ class DataIntentMoveFragment : Fragment(), View.OnClickListener {
     override fun onClick(view: View?) {
         if (view?.id == R.id.btn_data_intent_move_fragment){
 
+            val mDetailsDataIntentMoveFragment = DetailsDataIntentMoveFragment()
+
+            val mBundle = Bundle()
+            mBundle.putString(DetailsDataIntentMoveFragment.EXTRA_NAME, "life Style")
+            val description = "kategori ini berisi produk-produk lifestyle"
+
+            mDetailsDataIntentMoveFragment.arguments = mBundle
+            mDetailsDataIntentMoveFragment.description = description
+
+            val mFragmentManager = parentFragmentManager
+            mFragmentManager.beginTransaction().apply {
+                replace(
+                    R.id.fragment_on_activity_dataintent,
+                    mDetailsDataIntentMoveFragment,
+                    DetailsDataIntentMoveFragment::class.java.simpleName
+                ).addToBackStack(null).commit()
+            }
+
         }
     }
 
