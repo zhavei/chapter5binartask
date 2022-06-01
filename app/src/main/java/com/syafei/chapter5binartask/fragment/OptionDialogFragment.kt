@@ -63,9 +63,14 @@ class OptionDialogFragment : DialogFragment() {
 
         val fragment = parentFragment
 
-        if (fragment !is DetailsDataIntentMoveFragment) {
-            this.optionDialogListener = fragment.
+        if (fragment is DetailsDataIntentMoveFragment) {
+           this.optionDialogListener = fragment.optionDialogListener
         }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        this.optionDialogListener = null
     }
 
 }

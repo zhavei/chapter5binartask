@@ -44,6 +44,13 @@ class DetailsDataIntentMoveFragment : Fragment() {
                 tvDescFragmentDetailsDataIntentMoveFragment.text = description
             }
         }
+
+        binding.btnDialogFragmentDetailsDataIntentMoveFragment.setOnClickListener {
+            val mOptionDialogFragment = OptionDialogFragment()
+
+            val mFragmentManager = childFragmentManager
+            mOptionDialogFragment.show(mFragmentManager, OptionDialogFragment::class.java.simpleName)
+        }
     }
 
     override fun onDestroyView() {
