@@ -38,11 +38,12 @@ class DataIntentMoveFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(view: View?) {
         if (view?.id == R.id.btn_data_intent_move_fragment){
+            val eTDataIntentMoveFragment = binding.etDataIntentMoveFragment.text.toString()
 
             val mDetailsDataIntentMoveFragment = DetailsDataIntentMoveFragment()
 
             val mBundle = Bundle()
-            mBundle.putString(DetailsDataIntentMoveFragment.EXTRA_NAME, "life Style")
+            mBundle.putString(DetailsDataIntentMoveFragment.EXTRA_NAME, eTDataIntentMoveFragment)
             val description = "kategori ini berisi produk-produk lifestyle"
 
             mDetailsDataIntentMoveFragment.arguments = mBundle

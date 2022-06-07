@@ -14,12 +14,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <EditText
+        android:id="@+id/et_data_intent_move_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="isi disini"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_data_intent_move_fragment" />
+
     <Button
         android:id="@+id/btn_data_intent_move_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="button data intent move fragment"
         app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_data_intent_move_fragment" />
+        app:layout_constraintTop_toBottomOf="@id/et_data_intent_move_fragment" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

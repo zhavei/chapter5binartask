@@ -64,7 +64,7 @@ class OptionDialogFragment : DialogFragment() {
         val fragment = parentFragment
 
         if (fragment is DetailsDataIntentMoveFragment) {
-           this.optionDialogListener = fragment.optionDialogListener
+           //this.optionDialogListener = fragment.optionDialogListener
         }
     }
 
