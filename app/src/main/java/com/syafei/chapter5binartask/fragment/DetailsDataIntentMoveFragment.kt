@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.syafei.chapter5binartask.databinding.FragmentDetailsDataIntentMoveFragmentBinding
 
@@ -46,12 +47,34 @@ class DetailsDataIntentMoveFragment : Fragment() {
         }
 
         binding.btnDialogFragmentDetailsDataIntentMoveFragment.setOnClickListener {
+
             val mOptionDialogFragment = OptionDialogFragment()
 
-            val mFragmentManager = childFragmentManager
-            mOptionDialogFragment.show(mFragmentManager, OptionDialogFragment::class.java.simpleName)
+            val mFragmentManager = parentFragmentManager
+            mOptionDialogFragment.show(
+                mFragmentManager,
+                OptionDialogFragment::class.java.simpleName
+            )
         }
     }
+
+    /*
+    Gunakan method ini jika kita ingin menjaga data agar tetap aman ketika terjadi config changes (portrait - landscape)
+     */
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(EXTRA_DESCRIPTION, description)
+    }
+
+    /*
+    Kode yang akan dijalankan ketika option dialog dipilih ok
+    */
+    internal var optionDialogListener: OptionDialogFragment.OnOptionDialogListener =
+        object : OptionDialogFragment.OnOptionDialogListener {
+            override fun onOptionChosen(text: String?) {
+                Toast.makeText(requireActivity(), text, Toast.LENGTH_SHORT).show()
+            }
+        }
 
     override fun onDestroyView() {
         super.onDestroyView()

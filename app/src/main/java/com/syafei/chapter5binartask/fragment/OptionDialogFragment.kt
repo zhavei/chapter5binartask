@@ -16,11 +16,6 @@ class OptionDialogFragment : DialogFragment() {
 
     private var optionDialogListener: OnOptionDialogListener? = null
 
-    interface OnOptionDialogListener {
-        fun onOptionChosen(text: String?)
-    }
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,15 +32,11 @@ class OptionDialogFragment : DialogFragment() {
         binding.btnChoseOptionsFragmentOptionDialog.setOnClickListener {
             val chekedRadioButtonId = binding.rgOptionsFragmentOptionDialog.checkedRadioButtonId
             if (chekedRadioButtonId != -1) {
-                var coach: String? = when (chekedRadioButtonId) {
-                    R.id.rb_saf_options_fragment_option_dialog -> binding.rbSafOptionsFragmentOptionDialog.text.toString()
-                        .trim()
-                    R.id.rb_aceloti_options_fragment_option_dialog -> binding.rbAcelotiOptionsFragmentOptionDialog.text.toString()
-                        .trim()
-                    R.id.rb_mou_options_fragment_option_dialog -> binding.rbMouOptionsFragmentOptionDialog.text.toString()
-                        .trim()
-                    R.id.rb_tenha_options_fragment_option_dialog -> binding.rbTenhaOptionsFragmentOptionDialog.text.toString()
-                        .trim()
+                val coach: String? = when (chekedRadioButtonId) {
+                    R.id.rb_saf_options_fragment_option_dialog -> binding.rbSafOptionsFragmentOptionDialog.text.toString().trim()
+                    R.id.rb_aceloti_options_fragment_option_dialog -> binding.rbAcelotiOptionsFragmentOptionDialog.text.toString().trim()
+                    R.id.rb_mou_options_fragment_option_dialog -> binding.rbMouOptionsFragmentOptionDialog.text.toString().trim()
+                    R.id.rb_tenha_options_fragment_option_dialog -> binding.rbTenhaOptionsFragmentOptionDialog.text.toString().trim()
                     else -> null
                 }
                 optionDialogListener?.onOptionChosen(coach)
@@ -60,17 +51,23 @@ class OptionDialogFragment : DialogFragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-
+        /*
+        Saat attach maka set optionDialogListener dengan listener dari detailCategoryFragment
+        */
         val fragment = parentFragment
 
         if (fragment is DetailsDataIntentMoveFragment) {
-           //this.optionDialogListener = fragment.optionDialogListener
+            this.optionDialogListener = fragment.optionDialogListener
         }
     }
 
     override fun onDetach() {
         super.onDetach()
         this.optionDialogListener = null
+    }
+
+    interface OnOptionDialogListener {
+        fun onOptionChosen(text: String?)
     }
 
 }

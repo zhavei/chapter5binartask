@@ -23,28 +23,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="sir alex ferguyson" />
+            android:text="@string/sir_alex_ferguyson" />
 
         <RadioButton
             android:id="@+id/rb_mou_options_fragment_option_dialog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="maurinho" />
+            android:text="@string/maurinho" />
 
         <RadioButton
             android:id="@+id/rb_aceloti_options_fragment_option_dialog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="carlo enceloti" />
+            android:text="@string/carlo_enceloti" />
 
         <RadioButton
             android:id="@+id/rb_tenha_options_fragment_option_dialog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="eric ten haggo" />
+            android:text="@string/eric_ten_haggo" />
 
     </RadioGroup>
 
