@@ -39,10 +39,12 @@ class OptionDialogFragment : DialogFragment() {
                     R.id.rb_tenha_options_fragment_option_dialog -> binding.rbTenhaOptionsFragmentOptionDialog.text.toString().trim()
                     else -> null
                 }
+                //clik listener memakai interface
                 optionDialogListener?.onOptionChosen(coach)
                 dialog?.dismiss()
             }
         }
+
         binding.btnCloseOptionsFragmentOptionDialog.setOnClickListener {
             dialog?.cancel()
         }
@@ -59,6 +61,8 @@ class OptionDialogFragment : DialogFragment() {
         if (fragment is DetailsDataIntentMoveFragment) {
             this.optionDialogListener = fragment.optionDialogListener
         }
+
+        println("on attach di panggil uhuy")
     }
 
     override fun onDetach() {

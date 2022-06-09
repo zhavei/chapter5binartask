@@ -1,11 +1,14 @@
 package com.syafei.chapter5binartask.fragment
 
+import android.content.Intent
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.syafei.chapter5binartask.activityBringData.OpenProfileActivity
 import com.syafei.chapter5binartask.databinding.FragmentDetailsDataIntentMoveFragmentBinding
 
 class DetailsDataIntentMoveFragment : Fragment() {
@@ -46,11 +49,17 @@ class DetailsDataIntentMoveFragment : Fragment() {
             }
         }
 
+        binding.btnProfileFragmentDetailsDataIntentMoveFragment.setOnClickListener {
+            val mIntent = Intent(requireActivity(), OpenProfileActivity::class.java)
+            startActivity(mIntent)
+        }
+
         binding.btnDialogFragmentDetailsDataIntentMoveFragment.setOnClickListener {
 
             val mOptionDialogFragment = OptionDialogFragment()
 
-            val mFragmentManager = parentFragmentManager
+            // OptionDialogFragment adalah child dari DetailsDataIntentMoveFragment method show() akan memangil childnya
+            val mFragmentManager = childFragmentManager
             mOptionDialogFragment.show(
                 mFragmentManager,
                 OptionDialogFragment::class.java.simpleName
@@ -72,7 +81,8 @@ class DetailsDataIntentMoveFragment : Fragment() {
     internal var optionDialogListener: OptionDialogFragment.OnOptionDialogListener =
         object : OptionDialogFragment.OnOptionDialogListener {
             override fun onOptionChosen(text: String?) {
-                Toast.makeText(requireActivity(), text, Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, text, Toast.LENGTH_SHORT).show()
+                println("test toast coach chosen")
             }
         }
 
