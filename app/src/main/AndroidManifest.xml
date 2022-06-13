@@ -24,6 +24,9 @@
             android:name=".activityBringData.DataIntentActivityTwo"
             android:exported="false" />
         <activity
+            android:name=".activityBringData.OpenProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
